@@ -1,25 +1,104 @@
 {
-  "default": [
-      {
-          "type": "reject"
-      }
-  ],
-  "transports": {
-      "docker": {
-          "registry.access.redhat.com": [
-              {
-                  "type": "signedBy",
-                  "keyType": "GPGKeys",
-                  "keyPath": "/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
-              }
-          ],
-          "registry.redhat.io": [
-              {
-                  "type": "signedBy",
-                  "keyType": "GPGKeys",
-                  "keyPath": "/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
-              }
-          ]
-      }
-  }
+    "default": [
+        {
+            "type": "reject"
+        }
+    ],
+    "transports": {
+        "docker": {
+            "registry.access.redhat.com": [
+                {
+                    "type": "signedBy",
+                    "keyType": "GPGKeys",
+                    "keyPath": "/usr/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+                }
+            ],
+            "registry.redhat.io": [
+                {
+                    "type": "signedBy",
+                    "keyType": "GPGKeys",
+                    "keyPath": "/usr/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+                }
+            ],
+            "quay.io/toolbx-images": [
+                {
+                    "type": "sigstoreSigned",
+                    "keyPath": "/usr/etc/pki/containers/quay.io-toolbx-images.pub",
+                    "signedIdentity": {
+                        "type": "matchRepository"
+                    }
+                }
+            ],
+            "ghcr.io/ublue-os": [
+                {
+                    "type": "sigstoreSigned",
+                    "keyPath": "/usr/etc/pki/containers/ublue-os.pub",
+                    "signedIdentity": {
+                        "type": "matchRepository"
+                    }
+                }
+            ],
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        "docker-daemon": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        "atomic": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        "containers-storage": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        "dir": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        "oci": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        "oci-archive": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        "docker-archive": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        "tarball": {
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        }
+    }
 }
